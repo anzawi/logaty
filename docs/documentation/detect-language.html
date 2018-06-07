@@ -1,0 +1,302 @@
+---
+layout: documentation
+title: Detect Languages
+---
+
+
+<aside class="navigation">
+    <ul class="navigation__ul">
+        <li class="navigation__item has-items">
+            <a href="javascript:void(0)" class="navigation__item--link is-head">Detected Language</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#intro" class="navigation__item--link">Introduction</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#browser" class="navigation__item--link">Detect BrowserLanguage</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#country" class="navigation__item--link">Detect Country Language</a>
+        </li>
+        <li class="navigation__item navigation__item--last">
+            <a href="#tips" class="navigation__item--link">TIPS</a>
+        </li>
+
+
+
+        <li class="navigation__item">
+            <a href="/documentation/intro-install" class="navigation__item--link is-head">introduction & Installation</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/settings-configuration" class="navigation__item--link is-head">Settings & configuring</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/translation-content" class="navigation__item--link is-head">Translation Content</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/links" class="navigation__item--link is-head">Links & URL's</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/switch" class="navigation__item--link is-head">Language Switcher</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/helper-methods" class="navigation__item--link is-head">Methods & Helpers</a>
+        </li>
+    </ul>
+</aside>
+<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+<!--------------------------------------->
+
+
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <p class="title">
+                LOGATY <b>Detect Language's</b>
+            </p>
+            <p class="subtitle">
+                Detect visitors Browser or Country Language in easy! .
+            </p>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#browser">Detect BrowserLanguage</a></li>
+                    <li><a href="#country">Detect Country Language</a></li>
+                    <li><a href="#tips">TIPS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="intro" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>Learn About Logaty Detecting Languages</span>
+            <h2>Introduction</h2>
+            <p class="muted">
+                <b>LOGATY</b> Allow you to detect visitor language for his browser or country language.
+                <br>
+                to beginning detect visitor language you need to take a look on detect configuration <kbd>./Config/options.php</kbd>
+                <br>
+                you can see :<br>
+                <kbd class="eg">detect_browser_lang</kbd> to enable detecting browser language. <br>
+                <kbd class="eg">detect_country_lang</kbd> to enable detecting country language.
+                <br>
+                <kbd>true</kbd> mean enabled , <kbd>false</kbd> mean disabled.
+            </p>
+        </header>
+    </div>
+</section>
+
+<section id="browser" class="is-section has-background-white-bis">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>get visitor browser language</span>
+            <h2>Detect Browser Language</h2>
+            <p class="muted">
+                first thing you need to make sure is (detect browser language) enabled.<br>
+                <kbd class="eg">Important</kbd> <kbd>"detect_browser_lang" => true</kbd>
+            </p>
+        </header>
+        <h4>How to Use :</h4>
+        <pre>
+<code class="language-php">
+&lt;?php
+    echo $logaty->detect('browser');
+    // return browser language code-2-digits
+</code>
+        </pre>
+        <p class="muted">
+            for example if browser language is arabic the method will be return (ar),<br>
+            and if browser language is english the method will be return (en).
+        </p>
+
+        <h4>Full Example:</h4>
+        <pre>
+<code class="language-php">
+&lt;?php
+    $browserLanguage = $logaty->detect('browser');
+
+    if($browserLanguage != $logaty->current)
+    {
+        showModal([
+            'type'     => 'browser',
+            'language' => $browserLanguage,
+        ]);
+    }
+
+    // showModal function
+    function showModal($options = [])
+    {
+        if(!isset($_SESSION['detect']))
+        {
+            $_SESSION['detect'] = true;
+            // show modal or message box or do what you want
+        }
+    }
+</code>
+        </pre>
+        <p class="muted">
+            <kbd>$logaty->current</kbd> return current language in your website <br> you can check
+            <span class="square">
+                <a href="/documentation/helper-methods" class="tenth before after">(Methods & Helpers)</a>
+            </span>
+            section to learn more about <kbd>$logaty->current</kbd></p>
+    </div>
+</section>
+
+<section id="country" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>get visitor country language</span>
+            <h2>Detect Country Language</h2>
+            <p class="muted">
+                first thing you need to make sure is (detect country language) enabled.<br>
+                <kbd class="eg">Important</kbd> <kbd>"detect_country_lang" => true</kbd>
+                <br> <b>if detected language is not enabled in your website, <br>this method will return default language in website</b>
+            </p>
+        </header>
+        <h4>How to Use :</h4>
+        <pre>
+<code class="language-php">
+&lt;?php
+    echo $logaty->detect('country');
+    // return browser language code-2-digits
+</code>
+        </pre>
+        <p class="muted">
+            for example if country language is arabic the method will be return (ar),<br>
+            and if country language is english the method will be return (en).
+            <br>
+            if detected language is not enabled in your website the method will be return (website default language).
+        </p>
+
+        <h4>Full Example:</h4>
+        <pre>
+<code class="language-php">
+&lt;?php
+    $browserLanguage = $logaty->detect('country');
+
+    if($browserLanguage != $logaty->current)
+    {
+        showModal([
+            'type'     => 'country',
+            'language' => $browserLanguage,
+        ]);
+    }
+
+    // showModal function
+    function showModal($options = [])
+    {
+        if(!isset($_SESSION['detect']))
+        {
+            $_SESSION['detect'] = true;
+            // show modal or message box or do what you want
+        }
+    }
+</code>
+        </pre>
+        <p class="muted">
+            <kbd>$logaty->current</kbd> return current language in your website <br> you can check
+            <span class="square">
+                <a href="/documentation/helper-methods" class="tenth before after">(Methods & Helpers)</a>
+            </span>
+            section to learn more about <kbd>$logaty->current</kbd></p>
+    </div>
+</section>
+
+<section id="tips" class="is-section has-background-white-bis">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>be smarter in your coding</span>
+            <h2>TIPS</h2>
+            <p class="muted">
+                <kbd>$logaty->detect($type = '')</kbd> its very fixable & smart method.
+                <br>
+                if you don't give it what you want to detect (country or browser)
+                <br>
+                its check automatically in your configuration and detect language using returned information.
+            </p>
+        </header>
+        <h4>for example :</h4>
+        <div class="columns">
+            <div class="column">
+                <p>
+                    if your configuration look like this
+                </p>
+            </div>
+            <div class="column">
+                <pre>
+<code class="language-php">
+    'detect_browser_lang' => true,
+	'detect_country_lang' => false,
+</code>
+                </pre>
+            </div>
+        </div>
+        <p>and call method</p>
+        <pre>
+<code class="language-php">
+    $logaty->detect();
+</code>
+        </pre>
+        <p class="margin-top-m55">the method will return browser language , because <kbd>detect_browser_lang</kbd> enabled and <kbd>detect_country_lang</kbd> disabled</p>
+        <br><br><br>
+        <div class="columns">
+            <div class="column">
+                <p>
+                    and if your configuration look like this
+                </p>
+            </div>
+            <div class="column">
+                <pre>
+<code class="language-php">
+    'detect_browser_lang' => false,
+	'detect_country_lang' => true,
+</code>
+                </pre>
+            </div>
+        </div>
+        <p>and call method</p>
+        <pre>
+<code class="language-php">
+    $logaty->detect();
+</code>
+        </pre>
+        <p class="margin-top-m55">the method will return country language , because <kbd>detect_country_lang</kbd> enabled and <kbd>detect_browser_lang</kbd> disabled</p>
+
+
+        <br><br><br>
+        <div class="columns">
+            <div class="column">
+                <p>
+                    and last thing if your configuration look like this
+                </p>
+            </div>
+            <div class="column">
+                <pre>
+<code class="language-php">
+    'detect_browser_lang' => true,
+	'detect_country_lang' => true,
+</code>
+                </pre>
+            </div>
+        </div>
+        <p>and call method</p>
+        <pre>
+<code class="language-php">
+    $logaty->detect();
+</code>
+        </pre>
+        <p class="margin-top-m55">the method will return an array <kbd>['country' => 'country-lang', 'browser' => 'browser-lang']</kbd></p>
+    </div>
+</section>

@@ -1,0 +1,242 @@
+---
+layout: documentation
+title: Translation Content
+---
+
+<aside class="navigation">
+    <ul class="navigation__ul">
+        <li class="navigation__item has-items">
+            <a href="javascript:void(0)" class="navigation__item--link is-head">Translation Content</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#structure" class="navigation__item--link">Files Structure</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#init" class="navigation__item--link">Initialization</a>
+        </li>
+        <li class="navigation__item navigation__item--last">
+            <a href="#get" class="navigation__item--link">Get Translation</a>
+        </li>
+
+
+        <li class="navigation__item">
+            <a href="/documentation/intro-install" class="navigation__item--link is-head">introduction & Installation</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/settings-configuration" class="navigation__item--link is-head">Settings & configuring</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/links" class="navigation__item--link is-head">Links & URL's</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/detect-language" class="navigation__item--link is-head">Detected Language</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/switch" class="navigation__item--link is-head">Language Switcher</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/helper-methods" class="navigation__item--link is-head">Methods & Helpers</a>
+        </li>
+    </ul>
+</aside>
+<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+<!--------------------------------------->
+<section class="hero is-dark is-bold">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <p class="title">
+                Translating Content
+            </p>
+            <p class="subtitle">
+                When you think about translating your content, you may think about the page “title” and “body”. However, fully translated content requires more attention. In this document, we explain what you need to know to starting translate your content in your sites.
+            </p>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a href="#structure">Files Structure</a></li>
+                    <li><a href="#init">Initialization</a></li>
+                    <li><a href="#get">Get Translation</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="structure" class="is-section has-background-white-bis">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>setup files to translation</span>
+            <h2>Files Structure</h2>
+            <p class="muted">the language directory in (<kbd>./assets/languages/</kbd>).
+                <br>
+                in this directory you must create one directory each language in your website.
+                <br><kbd>you can change language directory from configuration.</kbd>
+            </p>
+        </header>
+    </div>
+</section>
+
+<section id="init" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>Beginning Translation </span>
+            <h2>Initialization</h2>
+        </header>
+    </div>
+    <p class="muted"><kbd class="eg">Example</kbd> in my case i want to create website with 2 languages (English, Arabic).</p>
+    <ul class="guides">
+        <!-- 1 -->
+        <li class="guide has-figure">
+            <div class="columns">
+                <div class="column">
+                    <h5>Create Languages Directories</h5>
+                    <p>inside -assets/languages- directory I want to create (Arabic, English) directories</p>
+                </div>
+                <div class="column">
+                    <div class="file-tree">
+                        <ul>
+                            <li class="is-folder is-open">
+                                <span>languages</span>
+                                <ul>
+                                    <li class="is-folder">
+                                        <span>en</span>
+                                    </li>
+                                    <li class="is-folder">
+                                        <span>ar</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- 2 -->
+        <li class="guide has-figure">
+            <div class="columns">
+                <div class="column">
+                    <h5>Create Translation Files</h5>
+                    <p>inside each -languages directories- I want to create translation files for homepage content</p>
+                </div>
+                <div class="column">
+                    <div class="file-tree">
+                        <ul>
+                            <li class="is-folder is-open">
+                                <span>languages</span>
+                                <ul>
+                                    <li class="is-folder is-open">
+                                        <span>en</span>
+                                        <ul>
+                                            <li class="is-file"><span>home.php</span></li>
+                                        </ul>
+                                    </li>
+                                    <li class="is-folder is-open">
+                                        <span>ar</span>
+                                        <ul>
+                                            <li class="is-file"><span>home.php</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- 3 -->
+        <li class="guide">
+            <h5>set translation files content</h5>
+            <p>translation files return an array has a sentence key and translation.</p>
+            <div class="columns">
+                <div class="column is-6">
+                    <kbd class="hint-code">ar/home.php</kbd>
+                    <pre>
+<code class="language-php">
+&lt;?php
+    return [
+        'welcome'      => 'مرحبا بك في الصفحة الرئيسية للغاتي.',
+        'description' => 'لغاتي هي مكتبة لتعدد اللغات, تسمح لك بتطوير موقعك القادم بعدة لغات بكل سهولة'
+    ];
+</code>
+                            </pre>
+                </div>
+                <div class="column is-6">
+                    <kbd class="hint-code">en/home.php</kbd>
+                    <pre>
+<code class="language-php">
+&lt;?php
+    return [
+        'welcome'      => 'Welcome to Logaty Home Page.',
+        'description' => 'Logaty its Multi Language Library which can help you rapidly develop your next Multilingual Website'
+    ];
+</code>
+                            </pre>
+                </div>
+            </div>
+        </li>
+        <li class="guide">
+            <h5>Now Create all translation files your website need</h5>
+            <p>now you can create all translation you need in your website. <br>
+                <kbd class="eg">Remember</kbd> you can add unlimited languages in your website.</p>
+        </li>
+    </ul>
+</section>
+
+<section id="get" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>get correct translation as selected language</span>
+            <h2>Get Translation</h2>
+            <p class="muted">
+                last thing we need to get translation as language visitor selected
+            </p>
+        </header>
+        <p>you have 3 ways to get translation. <br>
+            <kbd class="eg">echo $logaty('translation-file.translation-key')</kbd><br>
+            <kbd class="eg">echo $logaty->_x('translation-file.translation-key')</kbd><br>
+            <kbd class="eg">$logaty->__('translation-file.translation-key')</kbd>
+        </p>
+        <br>
+        <p>to return to our example</p>
+        <pre>
+<code class="language-php">
+&lt;?php
+    // as selected language
+    /* 1 */ echo $logaty('home.welcome');
+    /* 2 */ echo $logaty->_x('home.welcome');
+    /* 3 echo directly */ $logaty->__('home.welcome');
+
+    // as given language parameter
+    /* 1 */ echo $logaty('home.welcome', 'en');
+    /* 2 */ echo $logaty->_x('home.welcome', 'ar');
+    /* 3 echo directly */ $logaty->__('home.welcome', 'en');
+</code>
+            </pre>
+        <p class="muted">output well be as selected language if second parameter not set.</p>
+        <pre>
+<code class="language-php">
+&lt;?php
+    echo $logaty('home.welcome');
+    /** Output :
+        * if selected language is (arabic) : مرحبا بك في الصفحة الرئيسية للغاتي.
+        * if selected language is English  : Welcome to Logaty Home Page.
+    */
+
+    /** --------------- Force Translation Language ---------------- */
+     echo $logaty('home.welcome', 'en');
+    /** Output :
+        * if selected language is (arabic) :  Welcome to Logaty Home Page.
+        * if selected language is English  : Welcome to Logaty Home Page.
+    */
+</code>
+            </pre>
+    </div>
+</section>
+

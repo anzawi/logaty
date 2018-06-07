@@ -1,0 +1,28 @@
+{
+  "name": "phptricks/logaty",
+  "description": "logaty php library to create multilingual websites and web applications",
+  "type": "library",
+  "homepage": "http://logaty.phptricks.org",
+  "support": {
+    "email": "m.anzawi2013@gmail.com",
+    "issues": "https://github.com/anzawi/logaty-library/issues",
+    "source": "https://github.com/anzawi/logaty-library",
+    "docs": "http://logaty.phptricks.org"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "PHPtricks\\Logaty\\" : "Logaty"
+    },
+    "files" : [
+      "Logaty/start.php"
+    ]
+  },
+  "minimum-stability": "stable",
+  "license": "GPL-3",
+  "authors": [
+    {
+      "name": "Mohammad Walid Anzawi",
+      "email": "m.anzawi2013@gmail.com"
+    }
+  ]
+}

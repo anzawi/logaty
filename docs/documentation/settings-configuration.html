@@ -1,0 +1,448 @@
+---
+layout: documentation
+title: Settings & Configuration
+---
+
+<aside class="navigation">
+    <ul class="navigation__ul">
+        <li class="navigation__item has-items">
+            <a href="javascript:void(0)" class="navigation__item--link is-head">Settings & configuring</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#files" class="navigation__item--link">Configuration files</a>
+        </li>
+        <li class="navigation__item navigation__item--last">
+            <a href="#using" class="navigation__item--link">How to use</a>
+        </li>
+
+        <li class="navigation__item">
+            <a href="/documentation/intro-install" class="navigation__item--link is-head">introduction & Installation</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/translation-content" class="navigation__item--link is-head">Translation Content</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/links" class="navigation__item--link is-head">Links & URL's</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/detect-language" class="navigation__item--link is-head">Detected Language</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/switch,html" class="navigation__item--link is-head">Language Switcher</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/helper-methods" class="navigation__item--link is-head">Methods & Helpers</a>
+        </li>
+    </ul>
+</aside>
+<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+
+<!--------------------------------------->
+<section class="hero is-danger is-bold">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <p class="title">
+                LOGATY <b>Config & Settings</b>
+            </p>
+            <p class="subtitle">
+                Learn about LOGATY configuration technique, why we use it and where
+            </p>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a href="#files">Configuration files</a></li>
+                    <li><a href="#using">How to use</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="files" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span> Configuration files</span>
+            <h2>Find Config Files</h2>
+        </header>
+        <p>
+            Click on file to see options inside.
+        </p>
+    </div>
+    <div class="file-tree">
+
+        <ul>
+            <li class="is-folder is-open">
+                <span>Config</span>
+
+                <ul>
+                    <li class="is-file clickable" data-code="options">
+                        <span>options.php</span>
+                        <i>General Settings.</i>
+                    </li>
+                    <li class="is-file clickable" data-code="direction">
+                        <span>direction.php</span>
+                        <i>languages direction (ltr or rtl).</i>
+                    </li>
+                    <li class="is-file clickable" data-code="enabled">
+                        <span>enabled.php</span>
+                        <i>enabled languages in your website.</i>
+                    </li>
+                    <li class="is-file clickable" data-code="flag">
+                        <span>flag.php</span>
+                        <i>language flag name (icon name en.png).</i>
+                    </li>
+                    <li class="is-file clickable" data-code="name">
+                        <span>name.php</span>
+                        <i>Language Name ( Name in English & Natural Name ).</i>
+                    </li>
+                    <li class="is-file clickable" data-code="supported">
+                        <span>supported.php</span>
+                        <i>all languages supported in your website.</i>
+                    </li>
+                    <li class="is-file clickable" data-code="paths">
+                        <span>paths.php</span>
+                        <i>directory paths of (languages directory & flags directory).</i>
+                    </li>
+                    <li class="is-file clickable" data-code="code">
+                        <span>code.php</span>
+                        <i>languages ISO-2 Codes - optional if you want to use it.</i>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="using" class="no-border-bottom is-section">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>Get configuration value</span>
+            <h2>How to use Configuration</h2>
+            <p class="muted">
+                its easy to get configuration values
+            </p>
+        </header>
+
+        <pre><code class="language-php">
+&lt;?php
+    $logaty->config('file-name.option-you-need');
+
+    // get default language
+    echo $logaty->config('options.default_lang');
+
+    // get direction for arabic language
+    echo $logaty->config('direction.ar');
+
+</code></pre>
+
+        <p class="muted">
+            All options in (options.php) file you can retrieve value using options helper function
+        </p>
+        <pre><code class="language-php">
+&lt;?php
+    $logaty->options('option-you-need');
+
+    // get default language
+    echo $logaty->options('default_lang');
+
+    // check if detecting browser language is enabled
+    if( $logaty->options('detect_browser_lang')
+    {
+        echo "Yes";
+    }
+    else
+    {
+        echo "NO";
+    }
+
+</code></pre>
+        <p class="muted">You can get configuration using
+            <span class="square">
+    <a class="tenth before after" href="/documentation/helper-methods">Helper Functions</a>
+  </span>
+        </p>
+        <pre><code class="language-php">
+&lt;?php
+     // return -Array- All enabled languages
+    $logaty->enabled();
+     // check if english language is enabled return -Bool-
+     $logaty->enabled('en');
+
+     // get english language direction return -string (rtl, ltr)-
+      $logaty->direction('en');
+</code></pre>
+        pleas check Helper functions page to see all helper functions..
+        <span class="square">
+    <a class="tenth before after" href="/documentation/helper-methods">Helper Functions</a>
+  </span>
+    </div>
+</section>
+
+<!-- modals -->
+<div id="options" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * Library Options
+ */
+
+return [
+    /** Default Language in your website */
+	'default_lang' => 'en',
+    /** if you want to enable detect visitor browser language */
+	'detect_browser_lang' => true,
+    /** if you want to enable detect visitor country language */
+	'detect_country_lang' => false,
+    /**
+        enable(true) if ypu want to hide language parameter
+        from url if selected language is default language
+    */
+	'hide_default_language' => true,
+    /** language parameter in url name */
+	'lang_key' => 'lang',
+    /**
+        if you want to hide untranslated content
+            - advanced using when connect library with database -
+    */
+	'hide_untranslated' => true,
+    /**
+        if you want to alert user about untranslated content
+        (hide_untranslated must be false)
+            - advanced using when connect library with database -
+    */
+	'alert_user_available_lang' => true,
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<div id="direction" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * language direction
+ */
+
+return [
+    // 'lang-code' => 'direction'
+	'ar' => 'rtl', // arabic language is -right to left- then rtl
+	'en' => 'ltr', // english language is -left to right- then ltr
+	// you can add all languages supported in your website
+    'es' => 'ltr',
+	'de' => 'ltr',
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<div id="enabled" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+
+/**
+ * enabled languages in application
+ */
+// all enabled languages in your website
+return [
+	0 => 'ar',
+	1 => 'en',
+	2 => 'de'
+    // you can add all languages you need
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<div id="flag" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * flag name with extension
+ */
+// flag image name with extension (png, svg, ...etc)
+return [
+    // 'language-code' => 'flag-name.ext'
+	'ar' => 'ps.png',
+	'en' => 'en.png',
+	'de' => 'de.png',
+	'fr' => 'fr.png',
+	'pt' => 'pt.png',
+	'ro' => 'ro.png',
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<div id="name" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * Language name in english and natural
+ */
+
+return [
+	'english' => [
+    // 'language-code' => 'language name in english'
+		'ar' => 'Arabic',
+		'en' => 'English',
+		'de' => 'German',
+		'fr' => 'French',
+		'pt' => 'Portuguese',
+		'ro' => 'Romanian',
+		'es' => 'Spain',
+	],
+	'natural' => [
+    // 'language-code' => 'natural language name'
+		'ar' => 'العربية',
+		'en' => 'English',
+		'es' => 'España',
+		'de' => 'Deutsch',
+		'fr' => 'Français',
+		'pt' => 'Português',
+		'ro' => 'Română',
+	],
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<div id="supported" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * Supported language in application
+ */
+// all languages supported in your website
+// supported languages not mean its enabled
+//
+return [
+	0 => 'ar',
+	1 => 'en',
+	2 => 'de',
+	3 => 'fr',
+	4 => 'pt',
+	5 => 'es',
+	6 => 'ro',
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<div id="paths" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * directory paths for (languages and flags)
+ */
+
+return [
+    // translation files directory
+	'lang_files' => __DIR__ . '/../assets/languages/',
+    // flags images directory
+	'flags' => __DIR__ . '/../assets/flags/',
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<div id="code" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+<pre>
+<code class="language-php">
+&lt;?php
+/**
+ * Languages local code 4-digits
+   optional config we dont use it any where!
+ */
+return [
+	'ar' => 'ar',
+	'en' => 'en-US',
+	'de' => 'de_DE',
+	'fr' => 'fr_FR',
+	'pt' => 'es_ES',
+	'ro' => 'ro_RO',
+	'te' => 'te-TE',
+];
+</code>
+</pre>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+
+<script>
+    $(function() {
+        $('.clickable').click(function () {
+            var target = $(this).data('code')
+            $("#"+target).toggleClass('is-active')
+        });
+
+        $('.modal-close, .modal-background').click(function() {
+            $('.modal').removeClass('is-active');
+        })
+    })
+</script>

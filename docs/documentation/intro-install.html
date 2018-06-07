@@ -1,0 +1,259 @@
+---
+layout: documentation
+title: Introduction & Installing
+---
+<aside class="navigation">
+    <ul class="navigation__ul">
+        <li class="navigation__item has-items">
+            <a href="javascript:void(0)" class="navigation__item--link is-head">introduction & Installation</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#intro" class="navigation__item--link">introduction</a>
+        </li>
+        <li class="navigation__item navigation__item">
+            <a href="#install" class="navigation__item--link">Installation</a>
+        </li>
+        <li class="navigation__item navigation__item--last">
+            <a href="#unbox" class="navigation__item--link">Unboxing</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/settings-configuration" class="navigation__item--link is-head">Settings & configuring</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/translation-content" class="navigation__item--link is-head">Translation Content</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/links" class="navigation__item--link is-head">Links & URL's</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/detect-language" class="navigation__item--link is-head">Detected Language</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/switch" class="navigation__item--link is-head">Language Switcher</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/helper-methods" class="navigation__item--link is-head">Methods & Helpers</a>
+        </li>
+    </ul>
+</aside>
+<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+
+<!--------------------------------------->
+<section class="hero is-danger is-bold">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <p class="title">
+                <b>Getting started</b>, Beginning.
+            </p>
+            <p class="subtitle">
+                An introduction to LOGATY LIBRARY, meet starter page, quickly start developing your Awesome multilingual website, and more .
+            </p>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#install">Installation</a></li>
+                    <li><a href="#unbox">Unboxing</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="intro" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span> What's this </span>
+            <h2>Introduction</h2>
+        </header>
+        <p class="is-2">
+            <b>LOGATY</b> is a <b>PHP Library</b> which can help you rapidly develop your next <b>Multilingual Website</b>. It can be used for <b><i>CMS, Companies Site's, Personal site's, frameworks, etc</i></b>.<br>
+            It's <b><i>based on PHP Language</i></b> and contains a lot of Functions to easily make your interactive Website. .
+        </p>
+    </div>
+</section>
+
+<section id="install" class="is-section has-background-white-bis">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>Downloading</span>
+            <h2>Installation</h2>
+            <p class="muted">
+
+            </p>
+        </header>
+        <div class="columns">
+            <div class="column">
+<pre>
+<code class=""><span class="token property">composer </span><b>install</b><span class="token string"> phptricks-logaty --save</span>
+</code>
+</pre>
+            </div>
+            <div class="column">
+<pre>
+<code class="language-json">
+require: {
+    "phptricks-logaty": "dev-master"
+}
+</code>
+</pre>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="unbox" class="is-section has-background-white">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>unboxing</span>
+            <h2>What's included</h2>
+            <p class="muted">
+                Checkout the files that you'll see upon downloading
+            </p>
+        </header>
+        <p>Once you download the Library, you can see a folder with several files and sub folders. You can read description of some important files in continue.
+            <b><i> Click on closed folder icon to open it.</i></b></p>
+        <div class="file-tree">
+
+            <ul>
+                <li class="is-folder is-open">
+                    <span>Logaty</span>
+                    <i>Core folder its include Base Classes of library</i>
+                    <ul>
+                        <li class="is-folder">
+                            <span>Helpers</span>
+                            <ul>
+                                <li class="is-folder">
+                                    <span>Detect</span>
+                                    <ul>
+                                        <li class="is-file">
+                                            <span>Browser.php</span>
+                                            <i>trite - detect user browser language. </i>
+                                        </li>
+                                        <li class="is-file">
+                                            <span>Country.php</span>
+                                            <i>trite - detect user country language. </i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="is-folder">
+                                    <span>Switcher</span>
+                                    <ul>
+                                        <li class="is-file">
+                                            <span>Select.php</span>
+                                            <i>trite - create language switch from &lt;select&gt; element. </i>
+                                        </li>
+                                        <li class="is-file">
+                                            <span>Ul.php</span>
+                                            <i>trite - create language switch as list from &lt;ul&gt; element. </i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="is-file">
+                                    <span>Config.php</span>
+                                    <i>Config Class - handel and get configuration values</i>
+                                </li>
+                                <li class="is-file">
+                                    <span>Detect.php</span>
+                                    <i>Detect Class - Detect User Language from browser or country</i>
+                                </li>
+                                <li class="is-file">
+                                    <span>Link.php</span>
+                                    <i>Link Class - to create correct links with selected language.</i>
+                                </li>
+                                <li class="is-file">
+                                    <span>Switcher.php</span>
+                                    <i>Switcher Class - create and customize Languages Switch. </i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="is-folder">
+                            <span>Translate</span>
+                            <ul>
+                                <li class="is-file">
+                                    <span>Translator.php</span>
+                                    <i>Base Class for handel translation / get translation from files.</i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="is-file">
+                            <span>App.php</span>
+                            <i>Logaty Application <b>Container Class</b></i>
+                        </li>
+                        <li class="is-file">
+                            <span>start.php</span>
+                            <i><b>Initializing</b> Logaty library .</i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="is-folder">
+                    <span>Config</span>
+                    <i>Configuration variables (files).</i>
+                    <ul>
+                        <li class="is-file">
+                            <span>options.php</span>
+                            <i>General Settings.</i>
+                        </li>
+                        <li class="is-file">
+                            <span>direction.php</span>
+                            <i>languages direction (ltr or rtl).</i>
+                        </li>
+                        <li class="is-file">
+                            <span>enabled.php</span>
+                            <i>enabled languages in your website.</i>
+                        </li>
+                        <li class="is-file">
+                            <span>flag.php</span>
+                            <i>language flag name (icon name en.png).</i>
+                        </li>
+                        <li class="is-file">
+                            <span>name.php</span>
+                            <i>Language Name ( Name in English & Natural Name ).</i>
+                        </li>
+                        <li class="is-file">
+                            <span>supported.php</span>
+                            <i>all languages supported in your website.</i>
+                        </li>
+                        <li class="is-file">
+                            <span>paths.php</span>
+                            <i>directory paths of (languages directory & flags directory).</i>
+                        </li>
+                        <li class="is-file">
+                            <span>code.php</span>
+                            <i>languages ISO-2 Codes - optional if you want to use it.</i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="is-folder">
+                    <span>assets</span>
+                    <i>contain flags and translations</i>
+                    <ul>
+                        <li class="is-folder">
+                            <span>flags</span>
+                            <i>contain languages flags.</i>
+                        </li>
+                        <li class="is-folder">
+                            <span>languages</span>
+                            <i>contain translations files & directories.</i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="is-folder">
+                    <span>vendor</span>
+                    <i>composer components for classes auto-loader.</i>
+                </li>
+                <li class="is-file">
+                    <span>composer.json</span>
+                    <i>composer file - using composer for psr-4 auto-loader only.</i>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</section>

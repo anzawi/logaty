@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LOGATY Documentation - {{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script src="/assets/js/app.js"></script>
+</head>
+<body class="is-documentation">
+<section class="hero docs">
+  <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="navbar-item">
+                        <img src="/assets/imgs/logaty.png" alt="Logo">
+                    </a>
+                   
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu" style="display:block">
+                    <div class="navbar-end">
+                        <a href="/" class="navbar-item">
+                            Home
+                        </a>
+                        <a href="/documentation" class="navbar-item is-active">
+                            Documentation
+                        </a>
+                        <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                  <i class="fa fa-github"></i>
+                </span>
+                <span>Download</span>
+              </a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
+  
+{{ content }}
+
+<script>
+    $(function () {
+        $(".navbar-burger").click(function() {
+            $('body.is-documentation').toggleClass('active')
+            $('aside.navigation').toggleClass('active')
+            $('span.navbar-burger').toggleClass('active')
+            $('.hero.docs').toggleClass('is-active')
+        })
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            })
+        })
+    })
+
+        $('.file-tree li.is-folder > span').on('click', function (a) {
+            $(this).parent('li').find('ul:first').slideToggle(400, function () {
+                $(this).parent('li').toggleClass('is-open')
+            })
+        })
+    })
+</script>
+</body>
+</html>

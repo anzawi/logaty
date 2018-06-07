@@ -1,0 +1,204 @@
+---
+layout: documentation
+title: Helper Methods
+---
+
+
+<aside class="navigation">
+    <ul class="navigation__ul">
+        <li class="navigation__item has-items">
+            <a href="javascript:void(0)" class="navigation__item--link is-head">Methods & Helpers</a>
+        </li>
+        <li class="navigation__item">
+            <a href="#table" class="navigation__item--link">Methods Table</a>
+        </li>
+
+
+
+        <li class="navigation__item">
+            <a href="/documentation/intro-install" class="navigation__item--link is-head">introduction & Installation</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/settings-configuration" class="navigation__item--link is-head">Settings & configuring</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/translation-content" class="navigation__item--link is-head">Translation Content</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/links" class="navigation__item--link is-head">Links & URL's</a>
+        </li>
+        <li class="navigation__item">
+            <a href="/documentation/detect-language" class="navigation__item--link is-head">Detected Language</a>
+        </li>
+        <li class="navigation__item has-items">
+            <a href="/documentation/switch" class="navigation__item--link is-head">Language Switcher</a>
+        </li>
+    </ul>
+</aside>
+<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+<!--------------------------------------->
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <p class="title">
+                LOGATY <b> Helper Methods</b>
+            </p>
+            <p class="subtitle">
+                Over a 17 function reusable and develop, built to help you to fast development and programing.
+            </p>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a href="#table">Methods Table</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section id="table" class="is-section has-background-white-bis">
+    <div class="container is-fluid">
+        <header class="section-header">
+            <span>Quick View on Helper Methods</span>
+            <h2>Methods Table</h2>
+            <p class="muted">
+                Quick View on Helper Methods, Descriptions & How to Using.
+            </p>
+        </header>
+
+        <table class="table is-fullwidth is-bordered has-text-centered">
+            <thead>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+                <th>How to Use</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>$logaty->rootDir</td>
+                <td>root directory path</td>
+                <td>
+                    <pre><code class="language-php">echo $logaty->rootDir;</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->config</td>
+                <td>Config Class Object</td>
+                <td><a href="/documentation/settings-configuration#using" class="">take a look</a> </td>
+            </tr>
+            <tr>
+                <td>$logaty->options()</td>
+                <td>get General configuration</td>
+                <td><a href="/documentation/settings-configuration#using" class="">take a look</a> </td>
+            </tr>
+            <tr>
+                <td>$logaty->enabled</td>
+                <td>get Enabled Languages in website, if use it like property returns all enabled language, if use it like a function return if given language is enabled or not</td>
+                <td>
+<pre><code class="language-php">
+// return an array - all enabled languages
+var_dump($logaty->enabled);
+// return true if (arabic is enabled) and false if not.
+var_dump($logaty->enabled('ar'));
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->flag</td>
+                <td>get Language flag, if use it like property returns all languages flags, if use it like a function return given language flag</td>
+                <td>
+<pre><code class="language-php">
+// return an array - all languages flags
+var_dump($logaty->flag);
+// return(arabic flag path)
+var_dump($logaty->flag('ar'));
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->direction</td>
+                <td>get Language direction, if use it like property returns all languages directions, if use it like a function return given language direction</td>
+                <td>
+<pre><code class="language-php">
+// return an array - all languages directions
+var_dump($logaty->direction);
+// return(arabic direction)
+var_dump($logaty->direction('ar')); #rtl
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->name</td>
+                <td>get Language name in english, if use it like property returns all languages names, if use it like a function return given language name</td>
+                <td>
+<pre><code class="language-php">
+// return an array - all languages names in English
+var_dump($logaty->name);
+// return(arabic Name in English)
+var_dump($logaty->name('ar')); # Arabic
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->nameN</td>
+                <td>get Language name in native language, if use it like property returns all languages names, if use it like a function return given language name</td>
+                <td>
+<pre><code class="language-php">
+// return an array - all languages names in Native language
+var_dump($logaty->nameN);
+// return(arabic Name in Native Language)
+var_dump($logaty->nameN('ar')); # العربية
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->path($path)</td>
+                <td>get path for given property</td>
+                <td>
+<pre><code class="language-php">
+echo $logaty->path('lang_files');
+// return translation path directory
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->default</td>
+                <td>get default language in your website</td>
+                <td>
+<pre><code class="language-php">
+echo $logaty->default;
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->current</td>
+                <td>get current (selected) language from visitor.</td>
+                <td>
+<pre><code class="language-php">
+echo $logaty->current;
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>$logaty->link()</td>
+                <td>Generate Links with language parameter</td>
+                <td><a href="/documentation/links#create" class="">take a look</a> </td>
+            </tr>
+            <tr>
+                <td>$logaty-><b>__</b>()<br>$logaty->_x()<br>$logaty()</td>
+                <td>Get Text Translation</td>
+                <td><a href="/documentation/translation-content#get" class="">take a look</a> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
