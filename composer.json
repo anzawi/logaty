@@ -7,7 +7,7 @@
     "email": "m.anzawi2013@gmail.com",
     "issues": "https://github.com/anzawi/logaty-library/issues",
     "source": "https://github.com/anzawi/logaty",
-    "docs": "hhttps://anzawi.github.io/logaty/documentation"
+    "docs": "https://anzawi.github.io/logaty/documentation"
   },
   "autoload" : {
     "psr-4" : {
