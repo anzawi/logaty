@@ -2,12 +2,12 @@
   "name": "phptricks/logaty",
   "description": "logaty php library to create multilingual websites and web applications",
   "type": "library",
-  "homepage": "http://logaty.phptricks.org",
+  "homepage": "https://anzawi.github.io/logaty/",
   "support": {
     "email": "m.anzawi2013@gmail.com",
     "issues": "https://github.com/anzawi/logaty-library/issues",
-    "source": "https://github.com/anzawi/logaty-library",
-    "docs": "http://logaty.phptricks.org"
+    "source": "https://github.com/anzawi/logaty",
+    "docs": "hhttps://anzawi.github.io/logaty/documentation"
   },
   "autoload" : {
     "psr-4" : {
