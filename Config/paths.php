@@ -5,6 +5,6 @@
  */
 
 return [
-	'lang_files' => __DIR__ . '/../assets/languages/',
-	'flags' => __DIR__ . '/../assets/flags/',
+	'lang_files' => __DIR__ . '/../local/languages/',
+	'flags' => __DIR__ . '/../local/flags/',
 ];

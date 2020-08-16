@@ -9,6 +9,14 @@
     "source": "https://github.com/anzawi/logaty",
     "docs": "https://anzawi.github.io/logaty/documentation"
   },
+
+  "authors": [
+    {
+      "name": "Mohammad Waleed Anzawi",
+      "email": "m.anzawi2013@gmail.com"
+    }
+  ],
+
   "autoload" : {
     "psr-4" : {
       "PHPtricks\\Logaty\\" : "Logaty"
@@ -19,10 +27,8 @@
   },
   "minimum-stability": "stable",
   "license": "GPL-3.0-or-later",
-  "authors": [
-    {
-      "name": "Mohammad Walid Anzawi",
-      "email": "m.anzawi2013@gmail.com"
-    }
-  ]
+
+  "require": {
+    "phpunit/phpunit": "^9.3"
+  }
 }

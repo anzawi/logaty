@@ -1,20 +1,19 @@
 <?php
 
 namespace PHPtricks\Logaty\Helpers;
+use PHPtricks\Logaty\App;
 
 class Link
 {
-	private $app = null;
-	public function __construct()
+	public function __construct(App $app)
 	{
-		global $logaty;
-		$this->app = $logaty;
+		$this->app = $app;
 	}
 
 	public function create($link = '', $lang = '')
 	{
 		// if language code is not sent , so we need current language
-		if(!$lang || !in_array($lang, $this->app->enabled)) $lang = $this->app->current;
+		if(!$lang || !in_array($lang, $this->app->enabled())) $lang = $this->app->current();
 		// get the language query string key
 		$langKey = $this->app->options('lang_key');
 		/**
@@ -22,7 +21,7 @@ class Link
 		 */
 		// check if (https or http)
 		$url = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ? "https://" : "http://";
-		$url .= $_SERVER["SERVER_NAME"];
+		$url .= str_replace('https://', '', str_replace('http://', '', $_SERVER["SERVER_NAME"]));
 		// check if server port is not (80) so we need to add port to url
 		if ($_SERVER["SERVER_PORT"] != "80")
 		{
@@ -44,6 +43,7 @@ class Link
 		{
 			$url = rtrim(substr($url, 0, -strlen($_SERVER["QUERY_STRING"])), '?');
 		}
+
 		$query = $_GET;
 		// remove language parameter from query string
 		unset($query[$langKey]);
@@ -52,7 +52,7 @@ class Link
 		if (sizeof($query) > 0)
 		{
 			$url .= '?' . http_build_query($query);
-			if($this->app->options('hide_default_language') && $lang == $this->app->current)
+			if($this->app->options('hide_default_language') && $lang == $this->app->current())
 			{
 				return $url;
 			}
@@ -60,7 +60,7 @@ class Link
 		}
 		else
 		{
-			if($this->app->options('hide_default_language') && $lang == $this->app->default)
+			if($this->app->options('hide_default_language') && $lang == $this->app->defaultLang())
 			{
 				return $url;
 			}

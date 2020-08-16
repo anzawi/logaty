@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap = "vendor/autoload.php"
+         backupGlobals               = "false"
+         backupStaticAttributes      = "false"
+         colors                      = "true"
+         convertErrorsToExceptions   = "true"
+         convertNoticesToExceptions  = "true"
+         convertWarningsToExceptions = "true"
+         processIsolation            = "false"
+         stopOnFailure               = "false">
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <server name='HTTP_HOST' value='http://localhost' />
+        <server name="SERVER_NAME" value="http://foo.bar"/>
+        <server name="SERVER_PORT" value="80"/>
+        <server name="QUERY_STRING" value="lang=en"/>
+        <server name="REQUEST_URI" value="/home/index/"/>
+        <server name="HTTP_ACCEPT_LANGUAGE" value="ar-JO,ar;q=0.5"/>
+        <server name="HTTP_CF_CONNECTING_IP" value="213.139.45.134"/>
+    </php>
+</phpunit>

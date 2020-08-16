@@ -4,11 +4,10 @@ namespace PHPtricks\Logaty\Helpers\Detect;
 
 trait Country
 {
-	public function country($code = "")
+	public function country($code = '')
 	{
-		global $logaty;
 		if(!$code) $code = $this->getCountryCodeFromIp();
-		$countryInfo = $logaty->default;
+		$countryInfo = logaty()->defaultLang();
 		if(false !== ($countryFile = @file_get_contents("https://restcountries.eu/rest/v1/alpha/{$code}")))
 			$countryInfo = json_decode($countryFile, true);
 		return is_array($countryInfo) ? $countryInfo['languages'][0] : $countryInfo;
@@ -17,7 +16,7 @@ trait Country
 	{
 		$ip = $this->getIp();
 		$countryCode = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $ip));
-		return $countryCode['geoplugin_countryCode'];
+		return strtolower($countryCode['geoplugin_countryCode']);
 	}
 	private function getIp()
 	{

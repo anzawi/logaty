@@ -2,6 +2,8 @@
 
 namespace PHPtricks\Logaty\Translate;
 
+    use PHPtricks\Logaty\App;
+
 /**
  * Class Translator
  */
@@ -10,13 +12,12 @@ class Translator
     protected $app = null;
     protected $dir = '';
 
-    public function __construct()
+    public function __construct(App $app)
     {
-        global $logaty;
 
-        $this->app = $logaty;
+        $this->app = $app;
         // get language directory - you can edit it from config/paths.php -
-        $this->dir = $logaty->config->get('paths.lang_files');
+        $this->dir = $app->config('paths.lang_files');
     }
 
     /**
@@ -28,7 +29,7 @@ class Translator
     public function getTranslate($str, $lang = '')
     {
         // check if language send and its enabled language or set language to default one.
-        $lang = ($lang && in_array($lang, $this->app->enabled) ?
+        $lang = ($lang && in_array($lang, $this->app->enabled()) ?
             $lang :
             $this->app->current);
 
@@ -43,9 +44,9 @@ class Translator
          *          inside home.php -> [ 'welcome' => 'مرحبا بك في الصفحة الرئيسية لمكتبة لغاتي.' ]
          *
          *  to use it :
-         *  1 - $logaty('home.welcome');
-         *  2 - $logaty->__('home.welcome');
-         *  3 - echo $logaty->_x('home.welcome');
+         *  1 - logaty('home.welcome');
+         *  2 - logaty->__('home.welcome');
+         *  3 - logaty->_x('home.welcome');
          */
         $target = explode('.', $str);
         // get translation file

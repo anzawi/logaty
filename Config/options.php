@@ -7,9 +7,9 @@
 return [
 	'default_lang' => 'en',
 	'detect_browser_lang' => true,
-	'detect_country_lang' => false,
+	'detect_country_lang' => true,
 	'hide_untranslated' => true,
 	'alert_user_available_lang' => true,
-	'hide_default_language' => true,
-	'lang_key' => 'l',
+	'hide_default_language' => false,
+	'lang_key' => 'lang',
 ];
