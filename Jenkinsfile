@@ -58,8 +58,8 @@ pipeline {
             sh 'php $WORKSPACE/vendor/bin/phpunit --log-junit $WORKSPACE/report/junit-v7.4.xml'
             sh 'chmod -R a+w $PWD && chmod -R a+w $WORKSPACE'
             junit 'report/*.xml'
-          }*/
-        }
+          }
+        }*/
       }
     }
 
