@@ -9,16 +9,16 @@ pipeline {
 
     stage('Test') {
       parallel {
-        stage('PHP 5.6') {
+        stage('PHP 8.1.0') {
           agent {
             docker {
-              image 'allebb/phptestrunner-56:latest'
+              image 'php:8.1.0-fpm'
               args '-u root:sudo'
             }
 
           }
           steps {
-            echo 'Running PHP 5.6 tests...'
+            echo 'Running PHP 8.1.0 tests...'
             sh 'php -v'
             echo 'Installing Composer'
             sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer'
@@ -31,32 +31,10 @@ pipeline {
           }
         }
 
-        stage('PHP 7.3') {
-          agent {
-            docker {
-              image 'allebb/phptestrunner-73:latest'
-              args '-u root:sudo'
-            }
-
-          }
-          steps {
-            echo 'Running PHP 7.3 tests...'
-            sh 'php -v'
-            echo 'Installing Composer'
-            sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer'
-            echo 'Installing project composer dependencies...'
-            sh 'cd $WORKSPACE && composer install --no-progress'
-            echo 'Running PHPUnit tests...'
-            sh 'php $WORKSPACE/vendor/bin/phpunit --coverage-html $WORKSPACE/report/clover --coverage-clover $WORKSPACE/report/clover.xml --log-junit $WORKSPACE/report/junit.xml'
-            sh 'chmod -R a+w $PWD && chmod -R a+w $WORKSPACE'
-            junit 'report/*.xml'
-          }
-        }
-
         stage('PHP 7.4') {
           agent {
             docker {
-              image 'allebb/phptestrunner-74:latest'
+              image 'php:7.4-fpm'
               args '-u root:sudo'
             }
 
@@ -74,7 +52,6 @@ pipeline {
             junit 'report/*.xml'
           }
         }
-
       }
     }
 
