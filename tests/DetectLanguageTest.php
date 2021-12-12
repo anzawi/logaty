@@ -19,7 +19,7 @@ class DetectLanguageTest extends TestCase
     public function we_can_detect_browser_language()
     {
         $browserLang = logaty()->detect('browser');
-        $this->assertEquals($browserLang, 'en');
+        $this->assertEquals($browserLang, 'ar');
     }
 
     /**
@@ -29,7 +29,7 @@ class DetectLanguageTest extends TestCase
     public function we_can_detect_country_language()
     {
         $countryLang = logaty()->detect('country');
-        $this->assertEquals($countryLang, 'en');
+        $this->assertEquals($countryLang, 'ar');
     }
 
     /**
