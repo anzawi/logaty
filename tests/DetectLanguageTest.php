@@ -29,7 +29,7 @@ class DetectLanguageTest extends TestCase
     public function we_can_detect_country_language()
     {
         $countryLang = logaty()->detect('country');
-        $this->assertEquals($countryLang, 'ar');
+        $this->assertEquals($countryLang, 'en');
     }
 
     /**
