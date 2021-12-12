@@ -243,7 +243,7 @@ class App
 
     public function detect($type = '')
     {
-        $detectedLanguage = null;
+        $detectedLanguage = $this->defaultLang();
         $detect = $this->detect;
         if (!$type)
         {
