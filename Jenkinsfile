@@ -35,7 +35,7 @@ pipeline {
           }
         }
 
-        stage('PHP 7.4') {
+        /*stage('PHP 7.4') {
           agent {
             docker {
               image 'php:7.4-fpm'
@@ -58,7 +58,7 @@ pipeline {
             sh 'php $WORKSPACE/vendor/bin/phpunit --log-junit $WORKSPACE/report/junit-v7.4.xml'
             sh 'chmod -R a+w $PWD && chmod -R a+w $WORKSPACE'
             junit 'report/*.xml'
-          }
+          }*/
         }
       }
     }
