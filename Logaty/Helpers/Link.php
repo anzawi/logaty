@@ -5,17 +5,13 @@ use PHPtricks\Logaty\App;
 
 class Link
 {
-	public function __construct(App $app)
-	{
-		$this->app = $app;
-	}
 
 	public function create($link = '', $lang = '')
 	{
 		// if language code is not sent , so we need current language
-		if(!$lang || !in_array($lang, $this->app->enabled())) $lang = $this->app->current();
+		if(!$lang || !in_array($lang, logaty()->enabled())) $lang = logaty()->current();
 		// get the language query string key
-		$langKey = $this->app->options('lang_key');
+		$langKey = logaty()->options('lang_key');
 		/**
 		 * Build the url
 		 */
@@ -52,7 +48,7 @@ class Link
 		if (sizeof($query) > 0)
 		{
 			$url .= '?' . http_build_query($query);
-			if($this->app->options('hide_default_language') && $lang == $this->app->current())
+			if(logaty()->options('hide_default_language') && $lang == logaty()->current())
 			{
 				return $url;
 			}
@@ -60,7 +56,7 @@ class Link
 		}
 		else
 		{
-			if($this->app->options('hide_default_language') && $lang == $this->app->defaultLang())
+			if(logaty()->options('hide_default_language') && $lang == logaty()->defaultLang())
 			{
 				return $url;
 			}

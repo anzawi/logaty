@@ -9,17 +9,6 @@ namespace PHPtricks\Logaty\Translate;
  */
 class Translator
 {
-    protected $app = null;
-    protected $dir = '';
-
-    public function __construct(App $app)
-    {
-
-        $this->app = $app;
-        // get language directory - you can edit it from config/paths.php -
-        $this->dir = $app->config('paths.lang_files');
-    }
-
     /**
      * get translation from files
      * @param string $str
@@ -29,9 +18,9 @@ class Translator
     public function getTranslate($str, $lang = '')
     {
         // check if language send and its enabled language or set language to default one.
-        $lang = ($lang && in_array($lang, $this->app->enabled()) ?
+        $lang = ($lang && in_array($lang, logaty()->enabled()) ?
             $lang :
-            $this->app->current);
+            logaty()->current);
 
         // handel key to get translation from correct file
         /**
@@ -51,7 +40,7 @@ class Translator
         $target = explode('.', $str);
         // get translation file
                 /*our language directory*/
-        $file = $this->dir .
+        $file = logaty()->config('paths.lang_files') .
             /* language-key/page-key */
             "{$lang}/{$target[0]}.php";
 

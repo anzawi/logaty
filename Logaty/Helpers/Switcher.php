@@ -7,12 +7,6 @@ use PHPtricks\Logaty\Helpers\Switcher\ImportTemplate;
 
 class Switcher
 {
-    protected $app;
-
-    public function __construct($app)
-    {
-        $this->app = $app;
-    }
 	use Select;
 	use Ul;
 	use ImportTemplate;

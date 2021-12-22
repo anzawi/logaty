@@ -12,13 +12,31 @@ use PHPtricks\Logaty\Translate\Translator;
 
 class App
 {
-    public function __construct()
+
+    private static $_instance = null;
+
+    private function __construct(
+        Config $config,
+        Link $link,
+        Detect $detect,
+        Translator $trans,
+        Switcher  $switcher
+    )
     {
-        $this->config = new Config();
-        $this->link = new Link($this);
-        $this->detect = new Detect();
-        $this->trans = new Translator($this);
-        $this->switcher = new Switcher($this);
+        $this-> config = $config;
+        $this-> link = $link;
+        $this-> detect = $detect;
+        $this-> trans = $trans;
+        $this-> switcher = $switcher;
+    }
+
+    public static function init()
+    {
+        if(static::$_instance === null) {
+            static::$_instance = Logaty::get(App::class);
+        }
+
+        return static::$_instance;
     }
 
     /**
@@ -51,6 +69,7 @@ class App
 			return $this->$property();
 		}
 				
+        // we will throw new exception
         return null;
     }
 
