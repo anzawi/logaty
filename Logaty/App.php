@@ -4,9 +4,10 @@
 namespace PHPtricks\Logaty;
 
 
+use PHPtricks\Logaty\Logaty;
+use PHPtricks\Logaty\Helpers\Link;
 use PHPtricks\Logaty\Helpers\Config;
 use PHPtricks\Logaty\Helpers\Detect;
-use PHPtricks\Logaty\Helpers\Link;
 use PHPtricks\Logaty\Helpers\Switcher;
 use PHPtricks\Logaty\Translate\Translator;
 
@@ -15,7 +16,7 @@ class App
 
     private static $_instance = null;
 
-    private function __construct(
+    public function __construct(
         Config $config,
         Link $link,
         Detect $detect,
@@ -28,15 +29,6 @@ class App
         $this-> detect = $detect;
         $this-> trans = $trans;
         $this-> switcher = $switcher;
-    }
-
-    public static function init()
-    {
-        if(static::$_instance === null) {
-            static::$_instance = Logaty::get(App::class);
-        }
-
-        return static::$_instance;
     }
 
     /**
