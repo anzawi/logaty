@@ -40,7 +40,7 @@ class Translator
         $target = explode('.', $str);
         // get translation file
                 /*our language directory*/
-        $file = logaty()->config('paths.lang_files') .
+        $file = logaty()->config->get('paths.lang_files') .
             /* language-key/page-key */
             "{$lang}/{$target[0]}.php";
 

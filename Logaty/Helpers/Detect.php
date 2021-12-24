@@ -4,6 +4,8 @@ namespace PHPtricks\Logaty\Helpers;
 
 class Detect
 {
-	use Detect\Browser;
-	use Detect\Country;
+    public function browser()
+    {
+        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    }
 }

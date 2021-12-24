@@ -1,7 +1,6 @@
 <?php
 
 namespace PHPtricks\Logaty\Helpers;
-use PHPtricks\Logaty\App;
 
 class Link
 {
@@ -9,9 +8,9 @@ class Link
 	public function create($link = '', $lang = '')
 	{
 		// if language code is not sent , so we need current language
-		if(!$lang || !in_array($lang, logaty()->enabled())) $lang = logaty()->current();
+		if(!$lang || !logaty()->isEnabled($lang)) $lang = logaty()->current();
 		// get the language query string key
-		$langKey = logaty()->options('lang_key');
+		$langKey = logaty()->option('lang_key');
 		/**
 		 * Build the url
 		 */
@@ -35,12 +34,17 @@ class Link
 		/**
 		 * check and build query string
 		 */
+        $query = $_GET;
 		if (strlen($_SERVER["QUERY_STRING"]) > 0 && !$link)
 		{
 			$url = rtrim(substr($url, 0, -strlen($_SERVER["QUERY_STRING"])), '?');
-		}
-
-		$query = $_GET;
+		} elseif (preg_match('/(.+\?)/', $link)) {
+            if(logaty()->option('hide_default_language') && $lang == logaty()->current())
+            {
+                return $url;
+            }
+            return $url . "&{$langKey}={$lang}";
+        }
 		// remove language parameter from query string
 		unset($query[$langKey]);
 		// check if we have more parameters
@@ -48,7 +52,7 @@ class Link
 		if (sizeof($query) > 0)
 		{
 			$url .= '?' . http_build_query($query);
-			if(logaty()->options('hide_default_language') && $lang == logaty()->current())
+			if(logaty()->option('hide_default_language') && $lang == logaty()->current())
 			{
 				return $url;
 			}
@@ -56,7 +60,7 @@ class Link
 		}
 		else
 		{
-			if(logaty()->options('hide_default_language') && $lang == logaty()->defaultLang())
+			if(logaty()->option('hide_default_language') && $lang == logaty()->default())
 			{
 				return $url;
 			}

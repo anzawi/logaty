@@ -11,18 +11,23 @@
          stopOnFailure               = "false">
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Logaty Classes testing">
+            <directory>tests/Classes</directory>
         </testsuite>
+<!--        <testsuite name="Logaty API testing">-->
+<!--            <directory>tests/App</directory>-->
+<!--        </testsuite>-->
+<!--        <testsuite name="Logaty Exceptions testing">-->
+<!--            <directory>tests/Exceptions</directory>-->
+<!--        </testsuite>-->
     </testsuites>
 
     <php>
         <server name='HTTP_HOST' value='http://localhost' />
-        <server name="SERVER_NAME" value="http://foo.bar"/>
+        <server name="SERVER_NAME" value="http://logaty.dev"/>
         <server name="SERVER_PORT" value="80"/>
         <server name="QUERY_STRING" value="lang=en"/>
         <server name="REQUEST_URI" value="/home/index/"/>
         <server name="HTTP_ACCEPT_LANGUAGE" value="ar-JO,ar;q=0.5"/>
-        <server name="HTTP_CF_CONNECTING_IP" value="213.139.45.134"/>
     </php>
 </phpunit>

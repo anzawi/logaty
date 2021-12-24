@@ -3,291 +3,145 @@
 
 namespace PHPtricks\Logaty;
 
-
-use PHPtricks\Logaty\Logaty;
 use PHPtricks\Logaty\Helpers\Link;
 use PHPtricks\Logaty\Helpers\Config;
 use PHPtricks\Logaty\Helpers\Detect;
+use PHPtricks\Logaty\ILogatyService;
 use PHPtricks\Logaty\Helpers\Switcher;
 use PHPtricks\Logaty\Translate\Translator;
+use PHPtricks\Logaty\Exceptions\FlagNotImplementException;
+use PHPtricks\Logaty\Exceptions\NameNotImplementException;
+use PHPtricks\Logaty\Exceptions\DirectionNotImplementException;
 
-class App
+class App implements ILogatyService
 {
-
-    private static $_instance = null;
-
     public function __construct(
         Config $config,
         Link $link,
         Detect $detect,
         Translator $trans,
         Switcher  $switcher
-    )
-    {
-        $this-> config = $config;
-        $this-> link = $link;
-        $this-> detect = $detect;
-        $this-> trans = $trans;
-        $this-> switcher = $switcher;
+    ) {
+        $this->config = $config;
+        $this->link = $link;
+        $this->detect = $detect;
+        $this->trans = $trans;
+        $this->switcher = $switcher;
     }
 
-    /**
-     * to use object as function
-     * @param $string
-     * @param string $lang
-     * @return string
-     *
-     * @uses logaty(STRING, LANG-CODE);
-     */
-    public function __invoke($string, $lang = '')
+    public function __get(string $method)
     {
-        return $this->_x($string, $lang);
+        return $this->$method();
     }
 
-
-    /**
-     * if we call a method like a property
-     * we need to call a method correctly
-     * @param $property
-     * @return mixed|null
-     */
-    public function __get($property)
+    public function link(): Link
     {
-        if(method_exists($this, $property))
-		{
-			if($property == 'default')
-				return $this->defaultLang();
-			
-			return $this->$property();
-		}
-				
-        // we will throw new exception
-        return null;
+        return $this->link;
+    }
+    public function config(): Config
+    {
+        return $this->config;
+    }
+    public function translator(): Translator
+    {
+        return $this->translator;
+    }
+    public function switcher(): Switcher
+    {
+        return $this->switcher;
+    }
+    public function detector(): Detect
+    {
+        return $this->detect;
     }
 
-
-    /**
-     * get root directory for our Library
-     * @return string
-     */
-    public function rootDir()
+    public function isEnabled(string $language): bool
     {
-        return dirname(__DIR__) . DIRECTORY_SEPARATOR;
+        return in_array($language, $this->enabled());
+    }
+    public function enabled(): array
+    {
+        return $this->config->get('enabled');
     }
 
-    /**
-     * get config value from config files
-     * @param string $path
-     * @return mixed|Config|null
-     *
-     * @uses   logaty()->config(file-name.config-name); // return value for key
-     * @uses   logaty()->config(); // return all configurations
-     */
-    public function config($path = '')
+    public function current(): string
     {
-        return (
-        $path ?
-            $this->config->get($path) :
-            $this->config->get()
-        );
-    }
-
-    /**
-     * get config value from Config/options.php file.
-     * @param $optionName
-     * @return string|null
-     *
-     * @uses logaty()->options(option-name);
-     */
-    public function options($optionName)
-    {
-        $option = $this->config("options.{$optionName}");
-        return (!is_array($option) ? $option : null);
-    }
-
-    /**
-     * get all enabled languages OR check if specified language is enabled
-     * @param string $lang
-     * @return string|bool
-     *
-     * @uses logaty()->enabled(); return (array) all enabled languages
-     * @uses logaty()->enabled(language-code);
-     *      return (bool) true if language enabled false if not
-     */
-    public function enabled($lang = '')
-    {
-        $enabledLanguages = $this->config('enabled');
-
-        return (
-        !$lang ?
-            $enabledLanguages :
-            in_array($lang, $enabledLanguages)
-        );
-    }
-
-    /**
-     * get flags
-     * @param string $lang
-     * @return string|array|null
-     *
-     * @uses logaty()->flag(); // return (array) all flags
-     *       logaty()->flag(language-Code); // return flag for -language-Code- language
-     *       return null if language code is undefined
-     */
-    public function flag($lang = '')
-    {
-        $flags = $this->config("flag");
-
-        return ($lang ? @$flags[$lang] : $flags);
-    }
-
-    /**
-     * get language direction (RTL, LTR)
-     * @param string $lang
-     * @return string|array|null
-     *
-     * @uses logaty()->direction(); // return (array) all directions
-     *       logaty()->direction(language-Code); // return direction for -language-Code- language
-     *       return null if language code is undefined
-     */
-    public function direction($lang = '')
-    {
-        $directions = $this->config("direction");
-
-        return ($lang ? @$directions[$lang] : $directions);
-    }
-
-    /**
-     * get language Name in English
-     * @param string $lang
-     * @return string|array|null
-     *
-     * @uses logaty()->name(); // return (array) all languages name
-     *       logaty()->name(language-Code); // return name for -language-Code- language
-     *       return null if language code is undefined
-     */
-    public function name($lang = '')
-    {
-        $names = $this->config("name.english");
-
-        return ($lang ? @$names[$lang] : $names);
-    }
-
-    /**
-     * get language Name in Natural Language
-     * @param string $lang
-     * @return string|array|null
-     *
-     * @uses logaty()->nameN(); // return (array) all languages name
-     *       logaty()->nameN(language-Code); // return name for -language-Code- language
-     *       return null if language code is undefined
-     */
-    public function nameN($lang = '')
-    {
-        $names = $this->config("name.natural");
-
-        return ($lang ? @$names[$lang] : $names);
-    }
-
-    /**
-     * Get Path
-     * @param $path
-     * @return mixed
-     */
-    public function path($path)
-    {
-        return $this->config('paths')[$path];
-    }
-
-    /**
-     * return default Language
-     */
-    public function defaultLang()
-    {
-        return $this->options('default_lang');
-    }
-
-    public function current()
-    {
-        $parameter = $this->options('lang_key');
+        $parameter = $this->option('lang_key');
         if (isset($_GET[$parameter]))
         {
-            if ($this->enabled(strtolower($_GET[$parameter])))
+            if ($this->isEnabled(strtolower($_GET[$parameter])))
             {
                 return strtolower($_GET[$parameter]);
             }
         }
 
-        return $this->defaultLang();
+        return $this->default();
+    }
+    public function default(): string
+    {
+        return $this->option('default_lang');
     }
 
-    /**
-     * generate link
-     * @param string $url
-     * @param string $lang
-     * @return string
-     */
-    public function link($url = '', $lang = '')
+    public function option(string $option): mixed
     {
-        return $this->link->create($url, $lang);
+        $option = $this->config->get("options.{$option}");
+        return $option;
     }
 
-    /**
-     * get translation
-     * @param $string
-     * @param string $lang
-     */
-    public function _x($string, $lang = '')
+    public function flag(string $language): string
     {
-        return $this->trans->getTranslate($string, $lang);
-    }
-
-    /**
-     * print translation direct
-     * @param $string
-     * @param string $lang
-     */
-    public function __($string, $lang = '')
-    {
-        echo $this->_x($string, $lang);
-    }
-
-    public function detect($type = '')
-    {
-        $detectedLanguage = $this->defaultLang();
-        $detect = $this->detect;
-        if (!$type)
-        {
-            if (
-                $this->options('detect_browser_lang')
-                &&
-                $this->options('detect_country_lang')
-            )
-            {
-                $detectedLanguage['browser'] = $detect->browser();
-                $detectedLanguage['country'] = $detect->country();
-            } else if ($this->options('detect_browser_lang'))
-            {
-                $detectedLanguage = $detect->browser();
-            } else if ($this->options('detect_country_lang'))
-            {
-                $detectedLanguage = $detect->country();
-            }
-        } elseif ($type == "browser")
-        {
-            if ($this->options('detect_browser_lang'))
-                $detectedLanguage = $detect->browser();
-        } elseif ($type == "country")
-        {
-            if ($this->options('detect_country_lang'))
-                $detectedLanguage = $detect->country();
+        if(isset($this->flags[$language])) {
+            return $this->flags[$language];
         }
 
-        return $detectedLanguage;
+        throw new FlagNotImplementException($language);
+    }
+    public function flags(): array
+    {
+        return $this->config->get("flags");
     }
 
-    /*public function trans()
+    public function direction(string $language): string
     {
-        return $this->trans;
-    }*/
+        if(isset($this->directions[$language])) {
+            return $this->directions[$language];
+        }
+
+        throw new DirectionNotImplementException($language);
+    }
+    public function directions(): array
+    {
+        return $this->config->get("direction");
+    }
+
+    public function name(string $language): string
+    { 
+        if(isset($this->config->get("name.english")[$language])) {
+            return $this->config->get("name.english")[$language];
+        }
+        
+        throw new NameNotImplementException($language);
+    }
+    public function naturalName(string $language): string
+    { 
+        if(isset($this->config->get("name.natural")[$language])) {
+            return $this->config->get("name.natural")[$language];
+        }
+        
+        throw new NameNotImplementException($language);
+    }
+
+    public function path(string $pathKey): string
+    {
+        return $this->config->get("paths.$pathKey");
+    }
+
+    public function _x(string $key, string $language = ''): string
+    {
+        return $this->translator->getTranslate($key, $language);
+    }
+    public function __(string $key, string $language = ''): void
+    {
+        echo $this->_x($key, $language);
+    }
 }

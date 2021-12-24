@@ -1,3 +1,4 @@
+<?php $id = 'logaty_' . uniqid() ?>
 <select id='<?=$id?>' class='logaty-switcher'>
     <?php foreach ($this->app->enabled() as $lang) : ?>
         <option <?=($lang == logaty()->current() ? 'selected ': '')?>class='logaty-switcher__option' value='<?= $this->app->link('', $lang) ?>'>

@@ -4,8 +4,8 @@ namespace PHPtricks\Logaty\Helpers\Switcher;
 
 trait Ul
 {
-	public function ul()
+	public function ul(): void
 	{
-		return $this->render('ul', null);
+		$this->render('ul');
 	}
 }
