@@ -14,4 +14,8 @@ full documentation https://anzawi.github.io/logaty-docs/
 
 tested on `php` versions :
 - 8.1.0
+- 8.0.0
 - 7.4.x
+
+-----
+`please note : next relase will not be suppor PHP 7.x`
