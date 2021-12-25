@@ -9,5 +9,3 @@ full documentation https://anzawi.github.io/logaty-docs/
 tested on `php` versions :
 - 8.1.0
 - 7.4.x
-- 7.3.x
-- 5.6.x
