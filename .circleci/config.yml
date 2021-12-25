@@ -44,7 +44,7 @@ jobs:
           paths:
             - ./vendor
 
-
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
-      - run: vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
+      - run: ./vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
+
