@@ -14,9 +14,9 @@
         <testsuite name="Logaty Classes testing">
             <directory>tests/Classes</directory>
         </testsuite>
-<!--        <testsuite name="Logaty API testing">-->
-<!--            <directory>tests/App</directory>-->
-<!--        </testsuite>-->
+        <testsuite name="Logaty API testing">
+            <directory>tests/App</directory>
+        </testsuite>
 <!--        <testsuite name="Logaty Exceptions testing">-->
 <!--            <directory>tests/Exceptions</directory>-->
 <!--        </testsuite>-->

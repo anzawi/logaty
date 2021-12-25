@@ -44,7 +44,7 @@ class App implements ILogatyService
     }
     public function translator(): Translator
     {
-        return $this->translator;
+        return $this->trans;
     }
     public function switcher(): Switcher
     {
