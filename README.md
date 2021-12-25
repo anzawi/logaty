@@ -1,6 +1,6 @@
 # logaty
 
-[![CircleCI](https://circleci.com/gh/anzawi/logaty/tree/master.svg?style=svg)](https://circleci.com/gh/anzawi/logaty/tree/master)
+[![CircleCI](https://circleci.com/gh/anzawi/logaty/tree/circleci-project-setup.svg?style=svg)](https://circleci.com/gh/anzawi/logaty/tree/circleci-project-setup)
 
 [![GitLabCI](https://gitlab.com/anzawi/logaty/badges/master/pipeline.svg)](https://gitlab.com/anzawi/logaty/)
 
