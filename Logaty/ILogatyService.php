@@ -74,7 +74,7 @@ interface ILogatyService
      *
      * @uses logaty()->option(option-name);
      */
-    public function option(string $option): mixed;
+    public function option(string $option);
 
     /**
      * get flag for givane language

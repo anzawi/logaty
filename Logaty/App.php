@@ -82,7 +82,7 @@ class App implements ILogatyService
         return $this->option('default_lang');
     }
 
-    public function option(string $option): mixed
+    public function option(string $option)
     {
         $option = $this->config->get("options.{$option}");
         return $option;
