@@ -2,8 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/anzawi/logaty/tree/circleci-project-setup.svg?style=svg)](https://circleci.com/gh/anzawi/logaty/tree/circleci-project-setup)
 
-[![GitLabCI](https://gitlab.com/anzawi/logaty/badges/master/pipeline.svg)](https://gitlab.com/anzawi/logaty/)
-
 
 Multi Language Library which can help you rapidly develop your next Multilingual Website 
 It has a lot of useful components to reduce the burden of create a Multilingual website for your next website.
